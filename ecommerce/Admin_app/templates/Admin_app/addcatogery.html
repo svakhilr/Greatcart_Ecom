@@ -1,0 +1,44 @@
+{% extends "Admin_app/adminbase.html" %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+          <article class="card-body">
+            
+            
+            <header class="mb-4"><h4 class="card-title">Add Catogery </h4></header>
+            
+                    <form action="" method="post" id="myForm" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        
+                      <div class="mainform">
+                        {{ form|crispy }}
+                        
+                        <div class="form-group">
+                          <div id="image-box" class="image-container"></div>
+                          <button class="btn btn-outline-info" id="crop-btn" style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                          <button class="btn btn-info" id="confirm-btn" style="width: 100%; margin-top: 10px;" type="submit">ADD CATOGORY</button>
+                          <a href="" class="btn btn-warning col-12 mt-4">Cancel</a>
+                        </div>
+                      </div>
+                      
+                    </form>
+                        
+                
+            </article>
+        </div> 
+        
+        <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+{% endblock content %}
+

@@ -1,0 +1,33 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<section class="container mt-4">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card" >
+          <div class="row mx-4" style="display: flex; justify-content: center;">
+            <form class="my-4" method='POST'>
+                {% csrf_token %}
+                
+               <div class="ms-5 p-4">
+                 {{ form.code |as_crispy_field }}
+               </div>
+                <button type="submit" class="btn btn-block btn-primary">Verify</button>
+            </form>
+         </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content%}

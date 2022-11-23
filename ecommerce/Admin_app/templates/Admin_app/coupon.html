@@ -1,0 +1,86 @@
+{% extends "Admin_app/adminbase.html" %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>Product Table</h6>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Coupon Name</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Discount</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Coupon Expiry</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delete</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+
+                {% for coupon in coupons %}
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{ coupon.coupon_name }}</h6>
+                            
+                          
+                        </div>
+                      </div>
+                    </td>
+                    <td class="align-middle text-center">
+                      <p class="text-xs font-weight-bold mb-0">{{coupon.discount }}</p>
+                      
+                    </td>
+                   
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">{{coupon.valid_to }}</p>
+                        
+                    </td>
+                    <td class="align-middle text-center">
+                        {% if coupon.active == 'True'%}
+                        <p class="text-xs font-weight-bold mb-0">Inactive</p>
+                        {% else %}
+                        <p class="text-xs font-weight-bold mb-0">Active</p>
+                        {% endif %}
+                        
+                    </td>
+                   
+
+                    
+                    
+                    <td class="align-middle text-center">
+                        <a href="{% url 'delete-coupon' coupon.id %}" class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure, you want to delete this coupon :{{catogory.catagory_name}}?')">delete</a>
+                    </td>
+
+                  </tr>
+                </tbody>
+             {% endfor %}
+              </table>
+              
+              <div class="card text-center text-white bg-success mt-3 ms-5 me-5">
+                
+                <div class="card-body">
+                  <h5 class="card-title">ADD COUPON</h5>
+                  
+                  <a href="{% url 'add-coupon' %}" class="btn btn-primary">ADD</a>
+                </div>
+                
+              </div>
+              
+    
+{% endblock content %}

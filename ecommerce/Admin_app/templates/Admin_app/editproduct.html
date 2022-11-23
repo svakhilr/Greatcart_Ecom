@@ -1,0 +1,73 @@
+{% extends "Admin_app/adminbase.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<section class="container">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card" >
+          <div class="row mx-4">
+            <form class="my-4" method='post' enctype='multipart/form-data'>
+                {% csrf_token %}
+                <div class="col-12 my-1">
+                    {{ form.product_name |as_crispy_field }}
+                </div>
+                <div class="col-12 my-1">
+                    {{ form.description |as_crispy_field }}
+                </div>
+                <div class="col-md-4 my-1">
+                    {{ form.price |as_crispy_field }}
+                </div>
+                <div class="col-md-4 my-1">
+                    {{ form.stock|as_crispy_field }}
+                </div>
+                <div class="col-md-4 my-1">
+                    {{ form.is_available |as_crispy_field }}
+                </div>  
+                <div class="my-1">
+                  {{ form.product_img |as_crispy_field }}
+                </div> 
+                
+                <div class="col-md-6 my-1">
+                {{ form.catogory |as_crispy_field }}
+                </div>
+               <div class="col-md-6 my-1">
+              {{ form.offer |as_crispy_field }}
+                </div>
+                <button type="submit" class="btn btn-block btn-primary "> Submit </button>
+            </form>
+         </div>
+        </div>
+          <!-- <article class="card-body">
+            
+            
+            <header class="mb-4"><h4 class="card-title">Edit product </h4></header>
+            
+                    <form action="" method="post" id="myForm" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        
+                      <div class="mainform">
+                        {{ form|crispy }}
+                        
+                        <div class="form-group">
+                          <div id="image-box" class="image-container"></div>
+                          <button class="btn btn-outline-info" id="crop-btn" style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+                          <button class="btn btn-info" id="confirm-btn" style="width: 100%; margin-top: 10px;" type="submit">Update</button>
+                          <a href="" class="btn btn-warning col-12 mt-4">Cancel</a>
+                        </div>
+                      </div>
+                      
+                    </form>
+                        
+                
+            </article> -->
+
+
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+    
+    
+    </section>
+{% endblock content %}
+

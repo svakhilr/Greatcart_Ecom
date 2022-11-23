@@ -1,0 +1,79 @@
+{% extends "Admin_app/adminbase.html" %}
+{% load static %}
+
+
+
+
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>Catogery Table</h6>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Slug</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delete</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+
+                {% for catogory in catogories %}
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="{{ catogory.cat_img.url }}" class="avatar avatar-sm me-3" alt="user1">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{ catogory.catagory_name }}</h6>
+                            
+                          
+                        </div>
+                      </div>
+                    </td class="align-middle text-center">
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">{{catogory.slug }}</p>
+                      
+                    </td>
+                   
+
+                    
+                   
+
+                    <td class="align-middle text-center">
+                      <a class="btn btn-danger" href="" role="button">View and Edit</a>
+                    </td>
+                    
+                    <td class="align-middle text-center">
+                        <a href="{% url 'delete-catogory' catogory.id %}" class="btn btn-outline-danger"
+                            onclick="return confirm('Are you sure, you want to delete category :{{catogory.catagory_name}}?')">delete</a>
+                    </td>
+
+                  </tr>
+                </tbody>
+             {% endfor %}
+              </table>
+              
+              <div class="card text-center text-white bg-success mt-3 ms-5 me-5">
+                
+                <div class="card-body">
+                  <h5 class="card-title">ADD CATOGORY</h5>
+                  
+                  <a href="{% url 'add-catogory' %}" class="btn btn-primary">ADD</a>
+                </div>
+                
+              </div>
+              
+    
+{% endblock content %}
